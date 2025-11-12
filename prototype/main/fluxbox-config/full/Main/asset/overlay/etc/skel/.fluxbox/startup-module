@@ -1,0 +1,553 @@
+#!/usr/bin/env bash
+
+
+
+
+##
+## ## Init
+##
+
+REF_BASE_DIR_PATH="$(cd -- "$(dirname -- "${0}")" ; pwd)"
+REF_PLAN_DIR_PATH="${REF_BASE_DIR_PATH}"
+#echo "${THE_BASE_DIR_PATH}"
+
+
+
+
+##
+## ## Main / Debug
+##
+
+DEFAULT_IS_DEBUG="false"
+IS_DEBUG="${IS_DEBUG:=$DEFAULT_IS_DEBUG}"
+
+
+##
+## ## Main / Util
+##
+
+util_error_echo () {
+	echo "${@}" 1>&2
+}
+
+util_debug_echo () {
+
+	if is_debug; then
+		echo "${@}" 1>&2
+	fi
+
+}
+
+is_debug () {
+
+	if [[ "${IS_DEBUG}" == "true" ]]; then
+		return 0
+	fi
+
+	return 1
+
+}
+
+is_not_debug () {
+
+	! is_debug
+
+}
+
+
+##
+## ## Main / Util / Command
+##
+
+is_function_exist () {
+
+	if type -p "${1}" > /dev/null; then
+		return 0
+	else
+		return 1
+	fi
+
+}
+
+is_command_exist () {
+
+	if [ -x "$(command -v ${1})" ]; then
+		return 0
+	else
+		return 1
+	fi
+
+}
+
+
+##
+## ## Main / Util / Process
+##
+
+util_stop_all ()  {
+
+	if is_command_exist 'killall'; then
+		util_stop_all_by_killall "${1}"
+		return 0
+	fi
+
+	if is_command_exist 'pkill'; then
+		util_stop_all_by_pkill "${1}"
+		return 0
+	fi
+
+	return 0
+
+}
+
+util_stop_all_by_pkill () {
+
+	if pkill "${1}"; then
+		return 0
+	fi
+
+	return 0
+
+}
+
+util_stop_all_by_killall () {
+
+	if killall -q -9 "${1}"; then
+		return 0
+	fi
+
+	return 0
+
+}
+
+
+
+
+##
+## ## Main / Path
+##
+
+REF_MAIN_HELPER_DIR_NAME="helper"
+REF_MAIN_HELPER_DIR_PATH="${REF_PLAN_DIR_PATH}/${REF_MAIN_HELPER_DIR_NAME}"
+
+REF_MASTER_STYLE_DIR_NAME="style"
+REF_MASTER_STYLE_DIR_PATH="${REF_MAIN_HELPER_DIR_PATH}/${REF_MASTER_STYLE_DIR_NAME}"
+
+
+
+
+##
+## ## Module / Applet / policykit
+##
+
+mod_component_policykit_start_portal () {
+
+	mod_component_policykit_start_use_lxqt_policykit_agent
+
+	return 0
+}
+
+mod_component_policykit_start_use_lxqt_policykit_agent () {
+
+	util_stop_all lxqt-policykit-agent
+
+	is_command_exist lxqt-policykit-agent && lxqt-policykit-agent &
+
+	return 0
+}
+
+
+##
+## ## Module / Applet / volume_control
+##
+
+mod_applet_volume_control_start_portal () {
+
+	mod_applet_volume_control_start_use_mate_volume_control_status_icon
+
+	return 0
+}
+
+mod_applet_volume_control_start_use_mate_volume_control_status_icon () {
+
+	util_stop_all mate-volume-control-status-icon
+
+	is_command_exist mate-volume-control-status-icon && mate-volume-control-status-icon &
+
+	return
+}
+
+
+##
+## ## Module / Applet / network_manager
+##
+
+mod_applet_network_manager_start_portal () {
+
+	mod_applet_network_manager_start_use_nm_applet
+
+	return 0
+}
+
+mod_applet_network_manager_start_use_nm_applet () {
+
+	util_stop_all nm-applet
+
+	is_command_exist nm-applet && nm-applet &
+
+	return 0
+}
+
+
+##
+## ## Module / Applet / bluetooth_manager
+##
+
+mod_applet_bluetooth_manager_start_portal () {
+
+	mod_applet_bluetooth_manager_start_use_blueman_applet
+
+	return 0
+}
+
+mod_applet_bluetooth_manager_start_use_blueman_applet () {
+
+	util_stop_all blueman-applet
+
+	is_command_exist blueman-applet && blueman-applet &
+
+	return 0
+}
+
+
+
+
+##
+## ## Module / Component / panel
+##
+
+mod_component_panel_start_portal () {
+
+	mod_component_panel_start_use_tint2
+
+	return 0
+}
+
+mod_component_panel_start_use_tint2 () {
+
+	local tint2_dir_path="${REF_MASTER_STYLE_DIR_PATH}/tint2"
+
+	util_stop_all tint2
+
+	if ! is_command_exist tint2; then
+
+		return 0
+
+	fi
+
+
+	tint2 -c "${tint2_dir_path}/top_bottom_panel/tint2rc_top" &
+	tint2 -c "${tint2_dir_path}/top_bottom_panel/tint2rc_bottom" &
+
+
+	return 0
+}
+
+
+
+
+##
+## ## Module / Component / dock
+##
+
+mod_component_dock_start_portal () {
+
+	mod_component_dock_start_use_plank
+
+	return 0
+}
+
+mod_component_dock_start_use_plank () {
+
+	util_stop_all plank
+
+	if ! is_command_exist plank; then
+
+		return 0
+
+	fi
+
+
+	plank &
+
+
+	return 0
+}
+
+
+
+
+##
+## ## Module / Component / compositor
+##
+
+mod_component_compositor_start_portal () {
+
+	mod_component_compositor_start_use_picom
+
+	return 0
+}
+
+mod_component_compositor_start_use_picom () {
+
+	local picom_dir_path="${REF_MASTER_STYLE_DIR_PATH}/picom"
+
+	util_stop_all picom
+
+	if ! is_command_exist picom; then
+
+		return 0
+
+	fi
+
+
+	picom --config "${picom_dir_path}/picom.conf" &
+
+
+	return 0
+}
+
+
+
+
+##
+## ## Module / Component / xsettings
+##
+
+mod_component_xsettings_start_portal () {
+
+	mod_component_xsettings_start_use_xsettingsd
+
+	return 0
+}
+
+mod_component_xsettings_start_use_xsettingsd () {
+
+	local xsettingsd_dir_path="${REF_MASTER_STYLE_DIR_PATH}/xsettingsd"
+
+	util_stop_all xsettingsd
+
+	if ! is_command_exist xsettingsd; then
+
+		return 0
+
+	fi
+
+
+	xsettingsd --config "${xsettingsd_dir_path}/xsettingsd.conf" &
+
+
+	return 0
+}
+
+
+
+
+##
+## ## Module / Component / wallpaper
+##
+
+DEFAULT_WALLPAPER_FILE_PATH="/usr/share/backgrounds/default.jpg"
+REF_WALLPAPER_FILE_PATH="${REF_WALLPAPER_FILE_PATH:=$DEFAULT_WALLPAPER_FILE_PATH}"
+
+
+mod_component_wallpaper_start_portal () {
+
+
+	#mod_component_wallpaper_start_use_fbsetbg
+
+	#mod_component_wallpaper_start_use_feh
+
+
+	return 0
+}
+
+mod_component_wallpaper_start_use_fbsetbg () {
+
+	local wallpaper_file_path="${REF_WALLPAPER_FILE_PATH}"
+
+	util_stop_all fbsetbg
+
+	if ! is_command_exist fbsetbg; then
+
+		return 0
+
+	fi
+
+
+	fbsetbg "${wallpaper_file_path}" &
+
+
+	return 0
+}
+
+mod_component_wallpaper_start_use_feh () {
+
+	local wallpaper_file_path="${REF_WALLPAPER_FILE_PATH}"
+
+	local fehbg_file_path="${HOME}/.fehbg"
+
+	if ! is_command_exist feh; then
+
+		return 0
+
+	fi
+
+
+	if ! [ -f "${fehbg_file_path}" ]; then
+		return 0
+	fi
+
+
+	sh "${fehbg_file_path}" &
+
+
+	return 0
+}
+
+
+
+
+##
+## ## Model / Start
+##
+
+model_start_by_custom () {
+
+
+	##
+	## ## Component
+	##
+
+	mod_component_wallpaper_start_portal
+
+	mod_component_policykit_start_portal
+
+	#mod_component_panel_start_portal
+
+	mod_component_dock_start_portal
+
+	mod_component_compositor_start_portal
+
+	mod_component_xsettings_start_portal
+
+
+
+
+	##
+	## ## Applet
+	##
+
+	mod_applet_volume_control_start_portal
+
+	mod_applet_network_manager_start_portal
+
+	mod_applet_bluetooth_manager_start_portal
+
+
+
+
+	return 0
+}
+
+
+model_start_by_xdg_autostart_extra () {
+
+
+	##
+	## ## Component
+	##
+
+	mod_component_wallpaper_start_portal
+
+	mod_component_policykit_start_portal
+
+	#mod_component_panel_start_portal
+
+	mod_component_dock_start_portal
+
+	mod_component_compositor_start_portal
+
+	mod_component_xsettings_start_portal
+
+
+
+
+	##
+	## ## Applet
+	##
+
+	mod_applet_volume_control_start_portal
+
+	#mod_applet_network_manager_start_portal
+
+	#mod_applet_bluetooth_manager_start_portal
+
+
+
+
+	return 0
+}
+
+model_start_by_xdg_autostart () {
+
+	##
+	## sudo apt-get install obsession
+	##
+
+
+
+
+	if is_command_exist xdg-autostart; then
+
+		model_start_by_xdg_autostart_extra
+
+		xdg-autostart &
+
+		return 0
+
+	else
+
+		model_start_by_custom
+
+		return 0
+	fi
+
+
+
+
+	return 0
+}
+
+model_start () {
+
+	#model_start_by_custom
+
+	model_start_by_xdg_autostart
+
+	return 0
+}
+
+
+
+##
+## ## Main / Start
+##
+
+__main__ () {
+
+	model_start "${@}"
+
+}
+
+__main__ "${@}"

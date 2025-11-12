@@ -1,0 +1,83 @@
+
+
+##
+## # Fluxbox
+##
+
+
+
+
+##
+## ## Package / Fluxbox
+##
+
+fluxbox
+
+rofi
+
+feh
+
+tint2
+
+picom
+
+xsettingsd
+
+obsession
+
+mate-media
+
+lxqt-policykit
+
+
+
+
+##
+## ## Package / Tool
+##
+
+
+
+
+##
+## ## Package / Tool / Launcher
+##
+
+rofi
+
+
+
+
+##
+## ## Package / Tool / Terminal
+##
+
+xfce4-terminal
+sakura
+
+
+
+
+##
+## ## Package / Tool / File Manager
+##
+
+thunar
+
+
+
+
+##
+## ## Package / Tool / Text Editor
+##
+
+mousepad
+
+
+
+
+##
+## ## Package / Tool / Image Viewer
+##
+
+viewnior

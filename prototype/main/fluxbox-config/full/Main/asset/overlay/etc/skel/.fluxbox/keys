@@ -1,0 +1,1283 @@
+
+
+################################################################################
+### Head: Manual
+##
+
+##
+## $ man fluxbox-keys
+##
+
+##
+### Tail: Manual
+################################################################################
+
+
+
+
+################################################################################
+### Head: Config File Path
+##
+
+##
+## ## Config File Path
+##
+## > ~/.fluxbox/keys
+##
+
+##
+### Tail: Config File Path
+################################################################################
+
+
+
+
+################################################################################
+### Head: Tips / Mouse Button
+##
+
+##
+## ## Mouse Button
+##
+## | Mouse Button     | Action                       |
+## | ---------------- | ---------------------------- |
+## | `Double Mouse1`  | `Left Button Double Click`   |
+## | `Mouse1`         | `Left Button Click`          |
+## | `Mouse2`         | `Middle Button Click`        |
+## | `Mouse3`         | `Right Button Click`         |
+## | `Mouse4`         | `Middle Button Scroll Up`    |
+## | `Mouse5`         | `Middle Button Scroll Down`  |
+##
+
+##
+### Tail: Tips / Mouse Button
+################################################################################
+
+
+
+
+################################################################################
+### Head: Tips / Key
+##
+
+
+##
+## ## Modifiers
+##
+## > Shift Control Mod1 Mod4
+##
+
+##
+## * Mod1 = Alt
+## * Mod4 = Win = Super
+##
+
+
+##
+## * grave = `
+##
+
+
+##
+### Tail: Tips / Key
+################################################################################
+
+
+
+
+################################################################################
+### Head: Target / OnWindow / Mouse Button Modifier
+##
+
+
+##
+## ## Alt
+##
+
+## > Alt + mouse left drag a window to move window
+#OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+
+## > Alt + mouse right drag a window to resize window
+##OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing BottomRight}
+#OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+
+## > Alt + mouse middle click on a window to lower window
+#OnWindow Mod1 Mouse2 :Lower
+
+
+##
+## ## Win
+##
+
+## > Win + mouse left drag a window to move window
+OnWindow Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+
+## > Win + mouse right drag a window to resize window
+##OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing BottomRight}
+OnWindow Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+
+## > Win + mouse middle click on a window to lower window
+OnWindow Mod4 Mouse2 :Lower
+
+
+##
+### Tail: Target / OnWindow / Mouse Button Modifier
+################################################################################
+
+
+
+
+################################################################################
+### Head: Target / OnTitlebar / Mouse Button Modifier
+##
+
+
+##
+## ## Alt
+##
+
+## > Alt + mouse left drag a window to move window
+#OnTitlebar Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+
+## > Alt + mouse right drag a window to resize window
+#OnTitlebar Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+
+## > Alt + mouse middle click on a window to lower window
+#OnTitlebar Mod1 Mouse2 :Lower
+
+
+##
+## ## Win
+##
+
+## > Win + mouse left drag a window to move window
+OnTitlebar Mod4 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+
+## > Win + mouse right drag a window to resize window
+OnTitlebar Mod4 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+
+## > Win + mouse middle click on a window to lower window
+OnTitlebar Mod4 Mouse2 :Lower
+
+
+##
+### Tail: Target / OnTitlebar / Mouse Button Modifier
+################################################################################
+
+
+
+
+################################################################################
+### Head: Target / OnWindowBorder
+##
+
+
+OnWindowBorder Move1 :StartMoving
+
+
+##
+### Tail: Target / OnWindowBorder
+################################################################################
+
+
+
+
+################################################################################
+### Head: Target / OnTitlebar
+##
+
+
+## > mouse double left click on a window titlebar to toggle window maximize
+OnTitlebar Double Mouse1 :Maximize
+
+## > mouse right click on a window titlebar to show window menu
+OnTitlebar Mouse3 :WindowMenu
+
+## > mouse middle scroll on a window titlebar to toggle shade or unshade
+OnTitlebar Mouse4 :ShadeOn
+OnTitlebar Mouse5 :ShadeOff
+
+
+## > mouse left click on a window titlebar to [forcus] or [raise] or [activate tab]
+OnTitlebar Mouse1 :MacroCmd {Focus} {Raise} {ActivateTab}
+
+
+## > mouse left click on a window titlebar and drag to move the window
+OnTitlebar Move1 :StartMoving
+
+
+## > mouse middle click on a window titlebar to start tabbling, and drag to attach windows
+OnTitlebar Mouse2 :StartTabbing
+
+## > Control + mouse left click on a window titlebar to start tabbling, and drag to attach windows
+OnTitlebar Control Mouse1 :StartTabbing
+
+
+##
+### Tail: Target / OnTitlebar
+################################################################################
+
+
+
+
+################################################################################
+### Head: Target / OnDesktop
+##
+
+
+##
+## ## Default
+##
+
+#OnDesktop Mouse1 :HideMenus
+#OnDesktop Mouse2 :WorkspaceMenu
+#OnDesktop Mouse3 :RootMenu
+#OnDesktop Mouse4 :NextWorkspace
+#OnDesktop Mouse5 :PrevWorkspace
+
+
+
+
+##
+## ## Custom / v1
+##
+
+
+## > mouse left click on the desktop to hide menu
+#OnDesktop Mouse1 :HideMenus
+
+## > mouse middle click on the desktop to get workspace menu
+#OnDesktop Mouse2 :WorkspaceMenu
+
+## > mouse right click on the desktop to get root menu
+#OnDesktop Mouse3 :RootMenu
+
+## > mouse middle scroll on the desktop to change workspaces
+#OnDesktop Mouse4 :PrevWorkspace
+#OnDesktop Mouse5 :NextWorkspace
+
+
+
+
+##
+## ## Custom / v2
+##
+
+
+## > mouse left click on the desktop to hide menu
+#OnDesktop Mouse1 :HideMenus
+
+## > mouse middle click on the desktop to toggle show desktop
+#OnDesktop Mouse2 :ShowDesktop
+
+## > mouse right click on the desktop to get root menu
+#OnDesktop Mouse3 :RootMenu
+
+## > mouse middle scroll on the desktop to change workspaces
+#OnDesktop Mouse4 :PrevWorkspace
+#OnDesktop Mouse5 :NextWorkspace
+
+
+
+
+##
+## ## Custom / v3
+##
+
+
+## > mouse left click on the desktop to hide menu or toggle show desktop
+#OnDesktop Mouse1 :MacroCmd {HideMenus} {ShowDesktop}
+
+## > mouse middle click on the desktop to get workspace menu
+#OnDesktop Mouse2 :WorkspaceMenu
+
+## > mouse right click on the desktop to get root menu
+#OnDesktop Mouse3 :RootMenu
+
+## > mouse middle scroll on the desktop to change workspaces
+#OnDesktop Mouse4 :PrevWorkspace
+#OnDesktop Mouse5 :NextWorkspace
+
+
+
+
+##
+## ## Custom / v4
+##
+
+
+## > mouse left double click on the desktop to hide menu
+OnDesktop Double Mouse1 :ShowDesktop
+
+## > mouse left click on the desktop to hide menu
+OnDesktop Mouse1 :HideMenus
+
+## > mouse middle click on the desktop to get workspace menu
+OnDesktop Mouse2 :WorkspaceMenu
+
+## > mouse right click on the desktop to get root menu
+OnDesktop Mouse3 :RootMenu
+
+## > mouse middle scroll on the desktop to change workspaces
+OnDesktop Mouse4 :PrevWorkspace
+OnDesktop Mouse5 :NextWorkspace
+
+
+
+
+##
+### Tail: Target / OnDesktop
+################################################################################
+
+
+
+
+################################################################################
+### Head: Target / OnToolbar
+##
+
+
+## > scroll on the toolbar to change current window
+OnToolbar Mouse4 :PrevWindow {static groups} (workspace=[current]) (iconhidden=no)
+OnToolbar Mouse5 :NextWindow {static groups} (workspace=[current]) (iconhidden=no)
+
+
+##
+### Tail: Target / OnToolbar
+################################################################################
+
+
+
+
+################################################################################
+### Head: Target / OnLeftGrip OnRightGrip
+##
+
+
+OnLeftGrip Move1 :StartResizing bottomleft
+OnRightGrip Move1 :StartResizing bottomright
+
+
+##
+### Tail: Target / OnLeftGrip OnRightGrip
+################################################################################
+
+
+
+
+################################################################################
+### Head: System / Leave
+##
+
+## > exit
+Control Alt Delete :Exit
+
+
+## > suspend
+Mod1 Control z :Exec obsession-exit --suspend
+
+
+## > shutdown
+#Mod1 Shift z :Exec systemctl halt
+Mod1 Shift z :Exec obsession-logout
+#Mod1 Shift z :Exec obsession-exit --poweroff
+
+
+## > logout
+#Mod1 Shift x :Exit
+Mod1 Shift x :Exec obsession-logout
+
+
+## > reconfigure
+Mod1 Shift c :Reconfigure
+
+
+## > restart
+Mod1 Control c :Restart
+
+
+
+
+##
+## ## obsession
+##
+## run to install obsession
+##
+## ``` sh
+## sudo apt-get install obsession
+## ```
+##
+
+
+##
+## ## obsession-exit
+##
+## run
+##
+## ``` sh
+## obsession-exit --help
+## ```
+##
+## show
+##
+## ```
+## Usage:
+##   obsession-exit [OPTION?]
+##
+## Help Options:
+##   -h, --help             Show help options
+##
+## Application Options:
+##   -p, --poweroff         Shutdown the computer
+##   -s, --suspend          Suspend the computer
+##   -H, --hibernate        Go to Hibernation
+##   -r, --reboot           Restart the computer
+##   -c, --capabilities     List power capabilities
+## ```
+##
+
+
+##
+### Tail: System / Leave
+################################################################################
+
+
+
+
+################################################################################
+### Head: System / Toggle ShowDesktop
+##
+
+
+## > toggle show desktop
+Mod4 d :ShowDesktop
+#Control Mod1 d :ShowDesktop
+#OnDesktop Mouse2 :ShowDesktop
+
+
+## > toggle show desktop
+#Mod4 d :ToggleCmd {ShowDesktop}
+#Control Mod1 d :ToggleCmd {ShowDesktop}
+#OnDesktop Mouse2 :ToggleCmd {ShowDesktop}
+
+
+##
+### Tail: System / Toggle ShowDesktop
+################################################################################
+
+
+
+
+################################################################################
+### Head: Menu
+##
+
+
+## > toggle show root menu
+Mod1 F1 :RootMenu
+Mod4 space :RootMenu
+
+
+## > toggle show Workspace Menu
+Mod4 c :WorkspaceMenu
+
+
+## > toggle show window menu
+Mod1 space :WindowMenu
+
+
+##
+### Tail: Menu
+################################################################################
+
+
+
+
+################################################################################
+### Head: Runner
+##
+
+
+## > open a terminal
+#Mod1 F1 :Exec x-terminal-emulator
+
+
+## > toggle show root menu
+#Mod1 F1 :RootMenu
+
+## > open a dialog to run programs
+Mod1 F2 :Exec fbrun
+
+
+##
+### Tail: Runner
+################################################################################
+
+
+
+################################################################################
+### Head: App
+##
+
+
+##
+## ## Terminal
+##
+
+Mod1 Return :Exec sakura
+Mod1 Shift a :Exec sakura
+Mod1 Control a :Exec xfce4-terminal
+Mod1 Shift t :Exec qterminal
+Mod1 Control t :Exec lxterminal
+
+
+##
+## ## Terminal / Drop Down
+##
+
+Mod1 Shift y :Exec xfce4-terminal --drop-down
+
+
+##
+## ## Rofi
+##
+
+Mod1 Shift r :Exec rofi -show run
+Mod1 Shift w :Exec rofi -show window -show-icons
+Mod1 Shift d :Exec rofi -show drun -show-icons
+
+
+##
+## ## Favorite App
+##
+
+Mod1 Shift f :Exec thunar
+Mod1 Shift g :Exec pcmanfm
+Mod1 Shift b :Exec firefox --new-tab about:blank
+Mod1 Shift e :Exec mousepad
+
+
+#Mod1 Shift s :Exec system-settings
+Mod1 Shift s :Exec lxappearance
+
+
+#Mod1 Shift v :Exec pavucontrol
+Mod1 Shift v :Exec mate-volume-control
+
+
+##
+### Tail: App
+################################################################################
+
+
+
+
+################################################################################
+### Head: Window
+##
+
+
+##
+## ## Current Window Commands
+##
+
+
+## > toggle show window menu
+#Mod1 space :WindowMenu
+
+
+
+
+## > window fullscreen
+F11 :Fullscreen
+Mod4 f :Fullscreen
+
+
+## > window close
+Mod4 q :Close
+Mod1 F4 :Kill
+
+
+## > window toggle maximize
+Mod4 w :Maximize
+#Mod4 m :Maximize
+
+
+
+## > window minimize
+Mod4 x :Minimize
+#Mod4 n :Minimize
+
+
+
+## > window toggle shade
+Mod4 y :Shade
+
+
+## > window toggle decorations
+Mod4 v :ToggleDecor
+
+
+## > window set layer to top
+Mod4 t :SetLayer Top
+
+
+## > window set layer to normal
+Mod4 g :SetLayer Normal
+
+
+## > window set layer to bottom
+Mod4 b :SetLayer Bottom
+
+
+##
+### Tail: Window
+################################################################################
+
+
+
+
+################################################################################
+### Head: Window / Switch / Cycle
+##
+
+
+##
+## ## Alt-Tab Switcher
+##
+
+Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
+Mod1 Tab :NextWindow {groups} (workspace=[current])
+
+
+##
+## ## Window Switch / Win + {a,s}
+##
+
+Mod4 a :PrevWindow {groups} (workspace=[current])
+Mod4 s :NextWindow {groups} (workspace=[current])
+
+
+##
+## ## Window Switch / Win + {h,l}
+##
+
+#Mod4 h :PrevWindow {groups} (workspace=[current])
+#Mod4 l :NextWindow {groups} (workspace=[current])
+
+
+##
+### Tail: Window / Switch / Cycle
+################################################################################
+
+
+
+
+################################################################################
+### Head: Window Grouped / Switch / Cycle
+##
+
+
+## > cycle through tabs in the current window grouped
+Mod4 Tab :NextTab
+Mod4 Shift Tab :PrevTab
+
+
+##
+### Tail: Window Grouped / Switch / Cycle
+################################################################################
+
+
+
+
+################################################################################
+### Head: Workspace / Switch / Cycle
+##
+
+
+##
+## ## Workspace Switch / Alt + {a,s}
+##
+
+## > change to previous/next workspace
+Mod1 a :PrevWorkspace
+Mod1 s :NextWorkspace
+
+
+##
+## ## Workspace Switch / Alt + {h,l}
+##
+
+## > change to previous/next workspace
+#Mod1 h :PrevWorkspace
+#Mod1 l :NextWorkspace
+
+
+##
+### Tail: Workspace / Switch / Cycle
+################################################################################
+
+
+
+
+################################################################################
+### Head: Workspace / Switch / Specific
+##
+
+
+## > change to a specific workspace
+Control Mod1 1 :Workspace 1
+Control Mod1 2 :Workspace 2
+Control Mod1 3 :Workspace 3
+Control Mod1 4 :Workspace 4
+Control Mod1 5 :Workspace 5
+Control Mod1 6 :Workspace 6
+Control Mod1 7 :Workspace 7
+Control Mod1 8 :Workspace 8
+Control Mod1 9 :Workspace 9
+#Control Mod1 0 :Workspace 10
+
+
+##
+### Tail: Workspace / Switch / Specific
+################################################################################
+
+
+
+
+################################################################################
+### Head: Workspace / Send Window To Workspace
+##
+
+
+## > send the current window to previous/next workspace
+Mod4 Mod1 a :SendToPrevWorkspace
+Mod4 Mod1 s :SendToNextWorkspace
+
+
+## > send the current window and follow it to previous/next workspace
+Control Mod4 Mod1 a :TakeToPrevWorkspace
+Control Mod4 Mod1 s :TakeToNextWorkspace
+
+
+
+
+## > send the current window to a specific workspace
+Shift Mod1 1 :SendToWorkspace 1
+Shift Mod1 2 :SendToWorkspace 2
+Shift Mod1 3 :SendToWorkspace 3
+Shift Mod1 4 :SendToWorkspace 4
+Shift Mod1 5 :SendToWorkspace 5
+Shift Mod1 6 :SendToWorkspace 6
+Shift Mod1 7 :SendToWorkspace 7
+Shift Mod1 8 :SendToWorkspace 8
+Shift Mod1 9 :SendToWorkspace 9
+#Shift Mod1 0 :SendToWorkspace 10
+
+
+## > send the current window and change to a specific workspace
+Shift Mod4 1 :TakeToWorkspace 1
+Shift Mod4 2 :TakeToWorkspace 2
+Shift Mod4 3 :TakeToWorkspace 3
+Shift Mod4 4 :TakeToWorkspace 4
+Shift Mod4 5 :TakeToWorkspace 5
+Shift Mod4 6 :TakeToWorkspace 6
+Shift Mod4 7 :TakeToWorkspace 7
+Shift Mod4 8 :TakeToWorkspace 8
+Shift Mod4 9 :TakeToWorkspace 9
+#Shift Mod4 0 :TakeToWorkspace 10
+
+
+##
+### Tail: Workspace / Send Window To Workspace
+################################################################################
+
+
+
+
+################################################################################
+### Head: Window / Resize
+##
+
+
+##
+## ## Window / Resize / Up,Down,Left,Right
+##
+
+Shift Mod4 Up :Resize 0 -20
+Shift Mod4 Down :Resize 0 20
+Shift Mod4 Left :Resize -20 0
+Shift Mod4 Right :Resize 20 0
+
+
+Control Mod4 Up :Resize 0 -10
+Control Mod4 Down :Resize 0 10
+Control Mod4 Left :Resize -10 0
+Control Mod4 Right :Resize 10 0
+
+
+##
+### Tail: Window / Resize
+################################################################################
+
+
+
+
+################################################################################
+### Head: Window / Move
+##
+
+##
+## ## Window / Move / Up,Down,Left,Right
+##
+
+Mod4 Up :Move 0 -20
+Mod4 Down :Move 0 20
+Mod4 Left :Move -20 0
+Mod4 Right :Move 20 0
+
+
+##
+### Tail: Window / Move
+################################################################################
+
+
+
+
+################################################################################
+### Head: Window / Move Tiling
+##
+
+
+##
+## Move Center Area
+##
+
+Mod4 m :MacroCmd {ResizeTo 60% 80%} {MoveTo 0 0 Center}
+
+
+
+
+##
+## ### WINDOW TILING ###
+##
+
+
+##
+## > Refer: https://github.com/MX-Linux/mx-fluxbox/blob/master/mx/etc/skel/.fluxbox/keys#L122
+##
+
+
+##
+##---------------------------------------------------------------
+## Control + number keys
+##---------------------------------------------------------------
+##
+
+##
+## ## Make active window 1/2 of the screen
+##
+
+Control 1 :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Up}
+Control 2 :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Bottom}
+Control 3 :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Left}
+Control 4 :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Right}
+
+
+
+##
+## ## Make active window 1/4 of the screen on the upper left
+##
+
+Control 5 :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 Up}
+Control 6 :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 TopRight}
+Control 7 :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomLeft}
+Control 8 :MacroCmd {ResizeTo 50% 50%} {MoveTo 00 00 BottomRight}
+
+
+##
+## ## Make active window 1/3 of the screen on the left
+##
+
+Control 9 :MacroCmd {ResizeTo 33% 100%} {MoveTo 00 00 Left}
+
+
+##
+## ## toggle active window: Maximized/ last size
+##
+
+Control 0 :ToggleCmd {Maximize} {Restore}
+
+
+
+
+##
+##---------------------------------------------------------------
+## Alt + arrow keys
+##---------------------------------------------------------------
+##
+
+
+##
+## Make active window 1/2 of the screen
+##
+
+Mod1 Up            :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Up}
+Mod1 Down          :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Bottom}
+Mod1 Left          :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Left}
+Mod1 Right         :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Right}
+
+
+##
+## Make active window 1/4 of the screen on top/bottom left/right
+##
+
+Mod1 Shift Up      :MacroCmd {ResizeTo 50% 50% } {MoveTo 00 00 TopLeft}
+Mod1 Shift Down    :MacroCmd {ResizeTo 50% 50% } {MoveTo 00 00 TopRight}
+Mod1 Shift Left    :MacroCmd {ResizeTo 50% 50% } {MoveTo 00 00 BottomLeft}
+Mod1 Shift Right   :MacroCmd {ResizeTo 50% 50% } {MoveTo 00 00 BottomRight}
+
+
+##
+## ## Make active window 1/3 of the screen on the left
+##
+## > Unavailable
+##
+
+
+##
+## ## toggle center / restore
+##
+## > Unavailable
+##
+
+
+##
+##---------------------------------------------------------------
+## Alt and numpad keys : NumLock off
+##---------------------------------------------------------------
+##
+## ## keypad key layout
+##
+##    +-------------+
+##    |  7   8   9  |
+##    |  4   5   6  |
+##    |  1   2   3  |
+##    |      0      |
+##    +-------------+
+##
+
+Mod1 KP_1 :MacroCmd {ResizeTo  50%  50%} {MoveTo 00 00 BottomLeft}
+Mod1 KP_2 :MacroCmd {ResizeTo 100%  50%} {MoveTo 00 00 Bottom}
+Mod1 KP_3 :MacroCmd {ResizeTo  50%  50%} {MoveTo 00 00 BottomRight}
+Mod1 KP_4 :MacroCmd {ResizeTo  50% 100%} {MoveTo 00 00 Left}
+Mod1 KP_6 :MacroCmd {ResizeTo  50% 100%} {MoveTo 00 00 Right}
+Mod1 KP_7 :MacroCmd {ResizeTo  50%  50%} {MoveTo 00 00 TopLeft}
+Mod1 KP_8 :MacroCmd {ResizeTo 100%  50%} {MoveTo 00 00 Up}
+Mod1 KP_9 :MacroCmd {ResizeTo  50%  50%} {MoveTo 00 00 TopRight}
+
+
+##
+## ## center and resize 70%
+##
+
+Mod1 KP_5 :MacroCmd {ResizeTo 70% 70% } {MoveTo 00 00 Center}
+
+
+##
+## toggle full screen / restore
+##
+
+Mod1 KP_0 :ToggleCmd {Maximize} {Restore}
+
+
+##
+### Tail: Window / Move Tiling
+################################################################################
+
+
+
+
+################################################################################
+### Head: Screenshot / xfce4-screenshooter
+##
+
+
+##
+## ## xfce4-screenshooter
+##
+## run to install xfce4-screenshooter
+##
+## ``` sh
+## sudo apt-get install xfce4-screenshooter
+## ```
+##
+
+
+##
+## ## xfce4-screenshooter
+##
+## run
+##
+## ``` sh
+## xfce4-screenshooter -h
+## ```
+##
+## show
+##
+## ```
+## Usage:
+##   xfce4-screenshooter [OPTION…]
+##
+## Help Options:
+##   -h, --help               Show help options
+##   --help-all               Show all help options
+##   --help-gtk               Show GTK+ Options
+##
+## Application Options:
+##   -c, --clipboard          Copy the screenshot to the clipboard
+##   -d, --delay              Delay in seconds before taking the screenshot
+##   -f, --fullscreen         Take a screenshot of the entire screen
+##   -m, --mouse              Display the mouse on the screenshot
+##   --no-border              Removes the window border from the screenshot
+##   -o, --open               Application to open the screenshot
+##   -r, --region             Select a region to be captured by clicking a point of the screen without releasing the mouse button, dragging your mouse to the other corner of the region, and releasing the mouse button.
+##   -s, --save               File path or directory where the screenshot will be saved, accepts png, jpg and bmp extensions. webp, jxl and avif are only supported if their respective pixbuf loaders are installed.
+##   -S, --show in folder     Show the saved file in the folder.
+##   -V, --version            Version information
+##   -w, --window             Take a screenshot of the active window
+##   --supported-formats      Lists supported image formats, results can vary depending on installed pixbuf loaders
+##   --display=DISPLAY        X display to use
+##
+## ```
+##
+
+
+#Print :Exec xfce4-screenshooter --fullscreen
+
+#Mod4 Print :Exec xfce4-screenshooter --window
+
+#Control Print :Exec xfce4-screenshooter --region
+
+#Alt Print :Exec xfce4-screenshooter
+
+
+##
+### Tail: Screenshot / xfce4-screenshooter
+################################################################################
+
+
+
+
+################################################################################
+### Head: Screenshot / screengrab
+##
+
+
+##
+## ## screengrab
+##
+## run to install screengrab
+##
+## ``` sh
+## sudo apt-get install screengrab
+## ```
+##
+
+
+##
+## ## screengrab
+##
+## run
+##
+## ``` sh
+## screengrab -h
+## ```
+##
+## show
+##
+## ```
+## Usage: screengrab [options]
+## ScreenGrab is a crossplatform application for fast creating screenshots of your desktop.
+##
+## Options:
+##   -h, --help        Displays help on commandline options.
+##   --help-all        Displays help including Qt specific options.
+##   -v, --version     Displays version information.
+##   -f, --fullscreen  Take a fullscreen screenshot
+##   -a, --active      Take a screenshot of the active window
+##   -r, --region      Take a screenshot of a selection of the screen
+##   -m, --minimized   Run the application with a hidden main window
+## ```
+##
+
+
+Print :Exec screengrab --fullscreen
+
+Mod4 Print :Exec screengrab --active
+
+Control Print :Exec screengrab --region
+
+Alt Print :Exec screengrab
+
+
+##
+### Tail: Screenshot / screengrab
+################################################################################
+
+
+
+
+################################################################################
+### Head: Screen Bright / brightnessctl
+##
+
+
+##
+## ## brightnessctl
+##
+## run to install brightnessctl
+##
+## ``` sh
+## sudo apt-get install brightnessctl
+## ```
+##
+
+
+XF86_MonBrightnessDown :Exec brightnessctl set +5%
+
+XF86_MonBrightnessUp :Exec brightnessctl set 5%-
+
+
+Mod1 Shift bracketright :Exec brightnessctl set +5%
+
+Mod1 Shift bracketleft :Exec brightnessctl set 5%-
+
+
+##
+### Tail: Screen Bright / brightnessctl
+################################################################################
+
+
+
+
+################################################################################
+### Head: Volume Control / amixer
+##
+
+
+##
+## ## amixer
+##
+## run to install amixer
+##
+## ``` sh
+## sudo apt-get install alsa-utils
+## ```
+##
+
+
+##
+## ## Fn Key
+##
+
+##
+## volume control settings, using common keycodes
+## if these don't work, use xev to find out your real keycodes
+##
+
+#121 :Exec amixer -q -D pulse sset Master toggle
+#123 :Exec amixer -q -D pulse sset Master 5%+ unmute
+#122 :Exec amixer -q -D pulse sset Master 5%- unmute
+
+
+
+
+##
+## ## Fn Key
+##
+
+#XF86AudioMute :Exec amixer -q -D pulse sset Master toggle
+
+
+#XF86AudioLowerVolume :Exec amixer -q -D pulse sset Master 5%- unmute
+
+#XF86AudioRaiseVolume :Exec amixer -q -D pulse sset Master 5%+ unmute
+
+
+
+
+##
+##  ## Extra Key
+##
+
+#Mod1 m :Exec amixer -q -D pulse sset Master toggle
+
+
+#Mod1 Shift comma :Exec amixer -q -D pulse sset Master 5%- unmute
+
+#Mod1 Shift period :Exec amixer -q -D pulse sset Master 5%+ unmute
+
+
+#Mod1 Control comma :Exec amixer -q -D pulse sset Master 1%- unmute
+
+#Mod1 Control period :Exec amixer -q -D pulse sset Master 1%+ unmute
+
+
+##
+### Tail: Volume Control / amixer
+################################################################################
+
+
+
+
+################################################################################
+### Head: Volume Control / pamixer
+##
+
+
+##
+## ## pamixer
+##
+## run to install pamixer
+##
+## ``` sh
+## sudo apt-get install pamixer
+## ```
+##
+
+
+##
+## ## Fn Key
+##
+
+XF86AudioMute :Exec pamixer --toggle-mute
+
+
+XF86AudioLowerVolume :Exec pamixer -d 5
+
+XF86AudioRaiseVolume :Exec pamixer -i 5
+
+
+
+
+##
+##  ## Extra Key
+##
+
+Mod1 m :Exec pamixer --toggle-mute
+
+
+Mod1 Shift comma :Exec pamixer -d 5
+
+Mod1 Shift period :Exec pamixer -i 5
+
+
+Mod1 Control comma :Exec pamixer -d 1
+
+Mod1 Control period :Exec pamixer -i 1
+
+
+##
+### Tail: Volume Control / pamixer
+################################################################################

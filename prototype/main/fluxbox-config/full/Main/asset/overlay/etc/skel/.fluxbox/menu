@@ -1,0 +1,15 @@
+[begin] (fluxbox)
+	[exec] (Search) {rofi -show drun}
+	[separator]
+	[exec] (File Manager) {thunar}
+	[exec] (Text Editor) {mousepad}
+	[exec] (Web Browser) {firefox --new-tab about:blank}
+	[exec] (Terminal) {sakura}
+	[exec] (Appearance) {lxappearance}
+	[separator]
+	[submenu] (Apps)
+		[exec] (Search) {rofi -show drun}
+		[separator]
+		[include] (/etc/X11/fluxbox/fluxbox-menu)
+	[end]
+[end]
